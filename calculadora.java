@@ -30,6 +30,7 @@ public class calculadora {
     private JButton btnIgual;
     private JPanel panel1;
     private JLabel lbresultado;
+    private JTextField txtresultado;
     String Dato1, Dato2;
     String signo;
     String resultado;
@@ -101,15 +102,15 @@ public class calculadora {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cadena;
-                cadena=lbresultado.getText();
+                cadena=txtresultado.getText();
                 if(cadena.length()<=0)
                 {
-                    lbresultado.setText("0.");
+                    txtresultado.setText("0.");
                 }else
                 {
-                    if(!existepunto(lbresultado.getText()))
+                    if(!existepunto(txtresultado.getText()))
                     {
-                        lbresultado.setText(lbresultado.getText()+".");
+                        txtresultado.setText(txtresultado.getText()+".");
                     }
                 }
             }
@@ -117,54 +118,54 @@ public class calculadora {
         btnDivision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!lbresultado.getText().equals(""))
+                if(!txtresultado.getText().equals(""))
                 {
-                    Dato1=lbresultado.getText();
+                    Dato1=txtresultado.getText();
                     signo="/";
-                    lbresultado.setText("");
+                    txtresultado.setText("");
                 }
             }
         });
         btnMultiplicacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Dato1=lbresultado.getText();
+                Dato1=txtresultado.getText();
                 signo="*";
-                lbresultado.setText("");
+                txtresultado.setText("");
             }
         });
         btnResta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Dato1=lbresultado.getText();
+                Dato1=txtresultado.getText();
                 signo="-";
-                lbresultado.setText("");
+                txtresultado.setText("");
             }
         });
         btnSuma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Dato1=lbresultado.getText();
+                Dato1=txtresultado.getText();
                 signo="^";
-                lbresultado.setText("");
+                txtresultado.setText("");
             }
         });
         btnBorrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cadena;
-                cadena=lbresultado.getText();
+                cadena=txtresultado.getText();
                 if(cadena.length()>0)
                 {
                     cadena=cadena.substring(0,cadena.length()-1);
-                    lbresultado.setText(cadena);
+                    txtresultado.setText(cadena);
                 }
             }
         });
         btnC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lbresultado.setText("");
+                txtresultado.setText("");
             }
         });
         btnIgual.addActionListener(new ActionListener() {
@@ -172,48 +173,48 @@ public class calculadora {
             public void actionPerformed(ActionEvent e) {
 
                 String resultado;
-                Dato2=lbresultado.getText();
+                Dato2=txtresultado.getText();
                 if(!Dato2.equals(""))
                 {
                     resultado=Calculadora(Dato1,Dato2,signo);
-                    lbresultado.setText(resultado);
+                    txtresultado.setText(resultado);
                 }
             }
         });
         btnx2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double potencia=Double.parseDouble(lbresultado.getText());
-                lbresultado.setText(String.valueOf(Math.pow(potencia,2)));
+                double potencia=Double.parseDouble(txtresultado.getText());
+                txtresultado.setText(String.valueOf(Math.pow(potencia,2)));
 
             }
         });
         btna2X.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double raiz=Double.parseDouble(lbresultado.getText());
-                lbresultado.setText(String.valueOf(Math.sqrt(raiz)));
+                double raiz=Double.parseDouble(txtresultado.getText());
+                txtresultado.setText(String.valueOf(Math.sqrt(raiz)));
             }
         });
         btnporcentaje.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double porcentaje=Double.parseDouble(lbresultado.getText());
-                lbresultado.setText(String.valueOf(porcentaje/100));
+                double porcentaje=Double.parseDouble(txtresultado.getText());
+                txtresultado.setText(String.valueOf(porcentaje/100));
             }
         });
         btn1X.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double invertir=Double.parseDouble(lbresultado.getText());
-                lbresultado.setText(String.valueOf(1/invertir));
+                double invertir=Double.parseDouble(txtresultado.getText());
+                txtresultado.setText(String.valueOf(1/invertir));
             }
         });
         btnsignos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double cambio=Double.parseDouble(lbresultado.getText());
-                lbresultado.setText(String.valueOf(-cambio));
+                double cambio=Double.parseDouble(txtresultado.getText());
+                txtresultado.setText(String.valueOf(-cambio));
             }
         });
     }
@@ -258,14 +259,14 @@ public class calculadora {
     }
 
     private void addNumber(String digito) {
-        lbresultado.setText(lbresultado.getText()+digito);
+        txtresultado.setText(txtresultado.getText()+digito);
     }
 
     public static void main(String[] args) {
         JFrame frame =new JFrame("Calculadora");
 
         frame.setContentPane(new calculadora().panel1);
-        frame.setSize(250,250);
+        frame.setSize(300,300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -273,4 +274,6 @@ public class calculadora {
 
 
     }
+
+
 }
