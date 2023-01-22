@@ -39,6 +39,7 @@ public class calculadora {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                //lbresultado.setText("");
                addNumber("7");
             }
         });
@@ -144,7 +145,7 @@ public class calculadora {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Dato1=lbresultado.getText();
-                signo="+";
+                signo="^";
                 lbresultado.setText("");
             }
         });
@@ -179,6 +180,42 @@ public class calculadora {
                 }
             }
         });
+        btnx2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double potencia=Double.parseDouble(lbresultado.getText());
+                lbresultado.setText(String.valueOf(Math.pow(potencia,2)));
+
+            }
+        });
+        btna2X.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double raiz=Double.parseDouble(lbresultado.getText());
+                lbresultado.setText(String.valueOf(Math.sqrt(raiz)));
+            }
+        });
+        btnporcentaje.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double porcentaje=Double.parseDouble(lbresultado.getText());
+                lbresultado.setText(String.valueOf(porcentaje/100));
+            }
+        });
+        btn1X.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double invertir=Double.parseDouble(lbresultado.getText());
+                lbresultado.setText(String.valueOf(1/invertir));
+            }
+        });
+        btnsignos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double cambio=Double.parseDouble(lbresultado.getText());
+                lbresultado.setText(String.valueOf(-cambio));
+            }
+        });
     }
 
     private String Calculadora(String dato1, String dato2, String signo) {
@@ -200,6 +237,7 @@ public class calculadora {
         {
             resultadot=Double.parseDouble(dato1)*Double.parseDouble(dato2);
         }
+
         respuesta=resultadot.toString();
         return respuesta;
     }
